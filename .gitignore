@@ -22,3 +22,7 @@ cache
 
 # Atlassian module config
 atlassian-ide-plugin.xml
+
+#debug files control
+mode/debug
+mode/develop
