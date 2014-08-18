@@ -10,6 +10,10 @@ class Constants
      */
     const ACCOUNT_TABLE = 'user_account';
 
+    const ID_FIELD = 'id';
+
+    const UPDATED_AT = 'updated';
+
     // SECURITY ROLES
     /**
      *  Security role field
@@ -28,7 +32,14 @@ class Constants
      *  User name field
      */
     const NAME_FIELD = 'name';
-
+    /**
+     *  User name field
+     */
+    const USER_FILED = 'user';
+    /**
+     *  Admin user name
+     */
+    const ADMIN_USER = 'admin';
     /**
      *  Password field name
      */
