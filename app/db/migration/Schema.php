@@ -16,19 +16,15 @@ class Schema extends \Doctrine\DBAL\Schema\Schema
      * @var \Doctrine\DBAL\Connection
      */
     private $db = null;
-
-    private $useDefaultEngine = false;
     private $initData = array();
 
     /**
      * @param \Doctrine\DBAL\Connection $db - object
-     * @param bool $useDefaultEngine - (optional) default false USE DBAL default ENGINE FOR TABLES
-     */
-    public function __construct(Connection $db, $useDefaultEngine = false)
+    */
+    public function __construct(Connection $db)
     {
         parent::__construct();
         $this->db = $db;
-        $this->useDefaultEngine = $useDefaultEngine;
     }
 
     /**
@@ -115,10 +111,8 @@ class Schema extends \Doctrine\DBAL\Schema\Schema
                 foreach ($data as $row) {
                     $filteredRow = array_filter((array)$row, 'strlen');
                     try {
-                        /** @noinspection PhpUndefinedMethodInspection */
                         $this->db->insert($table, $filteredRow);
                     } catch (\Exception $e) {
-                        /** @noinspection PhpUndefinedMethodInspection */
                         $this->db->update($table, $filteredRow, $filteredRow);
                     }
                 }

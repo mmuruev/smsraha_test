@@ -1,0 +1,9 @@
+# Database configuration
+dbs.options:
+  smsraha:
+      driver: 'pdo_mysql'
+      dbhost: 'localhost'
+      dbname: 'smsraha'
+      user: 'smsraha'
+      password: 'smsraha'
+      charset: 'utf8'

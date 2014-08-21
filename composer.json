@@ -7,7 +7,9 @@
         "doctrine/dbal": "2.4.*",
         "doctrine/migrations": "dev-master",
         "symfony/security": "2.4.*",
-        "symfony/form": "2.4.*"
+        "symfony/form": "2.4.*",
+        "igorw/config-service-provider": "*" ,
+        "symfony/yaml": "2.4.*"
     },
     "autoload": {
         "psr-4": {
