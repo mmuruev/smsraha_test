@@ -1,39 +1,14 @@
 <?php
-/**
- *  Up to one dir
- */
-define('DIRECTORY_UP', '..');
-/**
- *  Config dir name
- */
-define('CONFIG_DIR_NAME', 'config');
-/**
- *  Project root dir
- */
-define('PROJECT_ROOT', realpath(__DIR__ . DIRECTORY_SEPARATOR . DIRECTORY_UP . DIRECTORY_SEPARATOR . DIRECTORY_UP));
-/**
- *  Config dir full path
- */
-define('GLOBAL_CONFIG_DIR', PROJECT_ROOT . DIRECTORY_SEPARATOR . CONFIG_DIR_NAME);
-/**
- *  Mode dir
- */
-define('MODE_DIR_NAME', 'mode');
+namespace app\db;
 
-/**
- * debug flag
- */
-define('DEBUG_FLAG_FILE', 'debug');
+use Igorw\Silex\ConfigServiceProvider;
+use Silex\Provider\DoctrineServiceProvider;
 
-/**
- *
- */
-define('CONFIG_FILE_NAME', 'global_config.yml');
-
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'config_constants.php';
 /**
  *  File prepare Silex for work and set instance in App
  */
-$loader = require_once PROJECT_ROOT . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
+$loader = require_once PROJECT_ROOT . DIRECTORY_SEPARATOR . VENDOR_DIR_NAME.DIRECTORY_SEPARATOR.'autoload.php';
 
 /** Bootstraping */
 $app = new \Silex\Application();
@@ -42,8 +17,8 @@ $app['composer_loader'] = $loader;
 
 $app['debug'] = file_exists(PROJECT_ROOT . DIRECTORY_SEPARATOR . MODE_DIR_NAME . DIRECTORY_SEPARATOR . DEBUG_FLAG_FILE);
 
-$app->register(new Igorw\Silex\ConfigServiceProvider(GLOBAL_CONFIG_DIR.DIRECTORY_SEPARATOR. 'global_config.yml')); // main config
-$app->register(new \Silex\Provider\DoctrineServiceProvider());
+$app->register(new ConfigServiceProvider(GLOBAL_CONFIG_DIR . DIRECTORY_SEPARATOR . CONFIG_FILE_NAME)); // main config
+$app->register(new DoctrineServiceProvider());
 
 
 $app['schema'] = $app->share(function () use ($app) {

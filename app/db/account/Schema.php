@@ -42,7 +42,9 @@ class Schema extends \app\db\migration\Schema
     public static function init($app, $dbInitData = array())
     {
         $dbInitData[Constants::ACCOUNT_TABLE] = array(
-            array(Constants::USER_FILED => Constants::ADMIN_USER, Constants::PASSWORD_FIELD => ''));
+            array(Constants::USER_FILED => Constants::ADMIN_USER,
+                // raw password is 'foo'
+                Constants::PASSWORD_FIELD => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg=='));
         static::create($app['schema'])->setInitData($dbInitData);
     }
 } 
