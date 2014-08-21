@@ -30,6 +30,7 @@ class Schema extends \app\db\migration\Schema
         $accountTable = $schema->createTable($accountTableName, true, true, true);
         $accountTable->addColumn(Constants::USER_FILED, Type::STRING, array('length' => 128, 'notnull' => true));
         $accountTable->addColumn(Constants::PASSWORD_FIELD, Type::STRING, array('length' => 128, 'notnull' => true, /* 'default' => ''*/));
+        $accountTable->addUniqueIndex(array(Constants::USER_FILED));
 
         return $schema;
     }
