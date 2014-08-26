@@ -28,9 +28,10 @@ class Schema extends \app\db\migration\Schema
         // 'notnull' => false
 
         $accountTable = $schema->createTable($accountTableName, true, true, true);
-        $accountTable->addColumn(Constants::USER_FILED, Type::STRING, array('length' => 128, 'notnull' => true));
+        $accountTable->addColumn(Constants::NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
         $accountTable->addColumn(Constants::PASSWORD_FIELD, Type::STRING, array('length' => 128, 'notnull' => true, /* 'default' => ''*/));
-        $accountTable->addUniqueIndex(array(Constants::USER_FILED));
+        $accountTable->addColumn(Constants::ROLE_FIELD, Type::STRING, array('length' => 255));
+        $accountTable->addUniqueIndex(array(Constants::NAME_FIELD));
 
         return $schema;
     }
@@ -43,7 +44,7 @@ class Schema extends \app\db\migration\Schema
     public static function init($app, $dbInitData = array())
     {
         $dbInitData[Constants::ACCOUNT_TABLE] = array(
-            array(Constants::USER_FILED => Constants::ADMIN_USER,
+            array(Constants::NAME_FIELD => Constants::ADMIN_USER, Constants::ROLE_FIELD => Constants::ROLE_ADMIN,
                 // raw password is 'foo'
                 Constants::PASSWORD_FIELD => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg=='));
         static::create($app['schema'])->setInitData($dbInitData);
