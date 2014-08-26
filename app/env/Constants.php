@@ -10,6 +10,19 @@ class Constants
      */
     const ACCOUNT_TABLE = 'user_account';
 
+    /**
+     *  Active user  data
+     */
+    const USER_DATA_TABLE = 'user_data';
+
+    /**
+     *  History table
+     */
+    const HISTORY_TABLE = 'history';
+
+    /**
+     *  Id field
+     */
     const ID_FIELD = 'id';
 
     const UPDATED_AT = 'updated';
@@ -44,4 +57,25 @@ class Constants
      *  Password field name
      */
     const PASSWORD_FIELD = 'password';
+
+    /**
+     *  First name field
+     */
+    const FIRST_NAME_FIELD = 'first_name';
+    /**
+     *  Second name field
+     */
+    const SECOND_NAME_FIELD = 'second_name';
+    /**
+     *  email field
+     */
+    const EMAIL_FIELD = 'email';
+    /**
+     *  Phone field
+     */
+    const PHONE_FIELD = 'phone';
+    /**
+     *  Birthday field
+     */
+    const BIRTHDAY_DATE_FIELD = 'birthday';
 } 

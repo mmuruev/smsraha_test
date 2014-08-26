@@ -17,6 +17,9 @@ class Schema extends \app\db\migration\Schema
     {
         /* Now use the Schema object to create a  table */
         $accountTableName = $schema::prependPrefix(Constants::ACCOUNT_TABLE, $tablePrefix);
+
+        $userTableName = $schema::prependPrefix(Constants::USER_DATA_TABLE, $tablePrefix);
+        $historyTableName = $schema::prependPrefix(Constants::HISTORY_TABLE, $tablePrefix);
         /**
          *  TYPES:
          *   'bigint', 'boolean',
@@ -26,12 +29,24 @@ class Schema extends \app\db\migration\Schema
          */
         // 'default' => 'TEST'
         // 'notnull' => false
-
-        $accountTable = $schema->createTable($accountTableName, true, true, true);
+        // User login data store
+        $accountTable = $schema->createTable($accountTableName, true, true);
         $accountTable->addColumn(Constants::NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
         $accountTable->addColumn(Constants::PASSWORD_FIELD, Type::STRING, array('length' => 128, 'notnull' => true, /* 'default' => ''*/));
         $accountTable->addColumn(Constants::ROLE_FIELD, Type::STRING, array('length' => 255));
         $accountTable->addUniqueIndex(array(Constants::NAME_FIELD));
+
+        // User personal data store
+        $userTable = $schema->createTable($userTableName, true, true);
+        $userTable->addColumn(Constants::FIRST_NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
+        $userTable->addColumn(Constants::SECOND_NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
+        $userTable->addColumn(Constants::EMAIL_FIELD, Type::STRING, array('length' => 128, 'notnull' => false));
+        $userTable->addColumn(Constants::PHONE_FIELD, Type::STRING, array('length' => 30, 'notnull' => false));
+        $userTable->addColumn(Constants::BIRTHDAY_DATE_FIELD, Type::DATE, array('notnull' => false));
+
+        // Changes table
+        $historyTable = $schema->createTable($historyTableName);
+
 
         return $schema;
     }
