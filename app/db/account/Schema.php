@@ -46,7 +46,13 @@ class Schema extends \app\db\migration\Schema
 
         // Changes table
         $historyTable = $schema->createTable($historyTableName);
-
+        $historyTable->addColumn(Constants::FIRST_NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
+        $historyTable->addColumn(Constants::SECOND_NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
+        $historyTable->addColumn(Constants::EMAIL_FIELD, Type::STRING, array('length' => 128, 'notnull' => false));
+        $historyTable->addColumn(Constants::PHONE_FIELD, Type::STRING, array('length' => 30, 'notnull' => false));
+        $historyTable->addColumn(Constants::BIRTHDAY_DATE_FIELD, Type::DATE, array('notnull' => false));
+        $historyTable->addColumn(Constants::NAME_FIELD, Type::STRING, array('length' => 128, 'notnull' => true));
+        $accountTable->addColumn(Constants::ACTION, Type::STRING, array('length' => 30, 'notnull' => true));
 
         return $schema;
     }

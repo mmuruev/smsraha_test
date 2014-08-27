@@ -78,4 +78,20 @@ class Constants
      *  Birthday field
      */
     const BIRTHDAY_DATE_FIELD = 'birthday';
-} 
+    /**
+     * Action field
+     */
+    const ACTION = 'action';
+    /**
+     *  CREATE action
+     */
+    const CREATE_ACTION = 'CREATED';
+    /**
+     *  UPDATE action
+     */
+    const UPDATE_ACTION = 'UPDATED';
+    /**
+     *  DELETE action
+     */
+    const DELETE_ACTION = 'DELETED';
+}
