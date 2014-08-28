@@ -2,14 +2,34 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+
+    <title>Log-in - CodePen</title>
+
+    <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css"/>
 </head>
 <body>
-<form action="{{ path('login_check') }}" method="post">
-    {{ error }}
-    <input type="text" name="_username" value="{{ last_username }}"/>
-    <input type="password" name="_password" value=""/>
-    <input type="submit"/>
-</form>
+<div class="login-card">
+    <h1>Log-in</h1><br>
+
+    <form action="{{ path('login_check') }}" method="post">
+        <input type="text" name="_username" placeholder="Username" value="{{ last_username }}"/>
+        <input type="password" name="_password" placeholder="Password"/>
+        {% if error %}
+            <div class="form-error"
+                 style="height: 34px; color: red; text-align: center">
+                <label id="error">{{ error }}</label>
+            </div>
+        {% endif %}
+        <input type="submit" name="login" class="login login-submit"/>
+
+        <div class="login-help">
+            <a href="#">Register</a>
+        </div>
+    </form>
+</div>
+
+<script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
 </body>
 </html>
